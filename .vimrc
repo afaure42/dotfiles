@@ -1,3 +1,13 @@
+unlet! skip_defaults_vim
+source $VIMRUNTIME/defaults.vim
+
+" Plugin manager install if not installed
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin()
 
 Plug 'vim-airline/vim-airline'
@@ -11,8 +21,6 @@ call plug#end()
 set background=dark
 let g:gruvbox_contrast_dark = 'soft'
 colorscheme gruvbox
-
-"autocmd VimEnter * call g:VimSuggestSetOptions(s:vim_suggest)
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
@@ -30,4 +38,6 @@ if (empty($TMUX) && getenv('TERM_PROGRAM') != 'Apple_Terminal')
   endif
 endif
 
-"Tmux line
+
+" Personnal conf
+set rnu
