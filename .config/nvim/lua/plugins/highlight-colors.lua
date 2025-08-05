@@ -1,0 +1,11 @@
+return {
+  -- add highlight colors
+  {
+    "brenoprata10/nvim-highlight-colors",
+    config = function()
+      require("nvim-highlight-colors").setup({
+        render = "background",
+      })
+    end,
+  },
+}
