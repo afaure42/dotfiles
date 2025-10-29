@@ -68,12 +68,12 @@ blocks:
       }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} "
     trailing_diamond: ""
 
-  - type: kubectl
+  - type: python
+    style: powerline
     background: p:color_dark_blue
     foreground: p:color_fg0
-    style: accordion
     powerline_symbol: ""
-    template: " 󱃾 {{ .Context }}{{ if .Namespace }} :: {{ .Namespace }}{{ end }} "
+    template: "   {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} "    
 
   - type: docker
     style: accordion
@@ -81,6 +81,14 @@ blocks:
     background: p:color_bg3
     foreground: p:color_fg3
     tempalte: "{{if .Context}}   {{ .Context }}{{end}} "
+      
+  - type: kubectl
+    background: p:color_dark_blue
+    foreground: p:color_fg0
+    style: accordion
+    powerline_symbol: ""
+    template: " 󱃾 {{ .Context }}{{ if .Namespace }} :: {{ .Namespace }}{{ end }} "
+
 
   - type: time
     style: diamond
